@@ -23,3 +23,15 @@ for row in rows:
     grand_total += quantity * unit_price
 
 print(f"\nGrand total: {grand_total:,.2f} EGP")
+
+totals_by_supplier = {}
+
+for row in rows:
+    supplier = row["supplier"]
+    line_total = float(row["quantity"]) * float(row["unit_price"])
+    totals_by_supplier[supplier] = totals_by_supplier.get(supplier, 0) + line_total
+
+print("\nSpending by supplier:")
+for supplier, total in sorted(totals_by_supplier.items(), key=lambda item: item[1], reverse=True):
+    share = total / grand_total * 100
+    print(f"  {supplier:<20} {total:>12,.2f} EGP  ({share:5.1f}%)")
