@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# أسرار وإعدادات محلية
+.env
+*.key
+
+# ملفات ويندوز
+Thumbs.db
+desktop.ini
+
+# ملفات Excel المؤقتة
+~$*.xlsx
+
+# بيانات حقيقية — ممنوع ترفع
+data/real/
