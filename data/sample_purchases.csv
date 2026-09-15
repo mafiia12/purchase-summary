@@ -1,0 +1,11 @@
+date,supplier,item,unit,quantity,unit_price
+2026-01-05,Al Nasr Trading,Cement CEM I 42.5N,ton,15,2450
+2026-01-05,Delta Supplies,Steel Rebar 12mm,ton,3,38500
+2026-01-08,Al Nasr Trading,Sand,m3,40,180
+2026-01-11,Horus Materials,Gypsum Board 12mm,sheet,120,145
+2026-01-12,Delta Supplies,Steel Rebar 16mm,ton,2,38200
+2026-01-15,Al Nasr Trading,Cement CEM I 42.5N,ton,20,2480
+2026-01-18,Horus Materials,Paint Primer,bucket,25,620
+2026-01-22,Nile Hardware,Screws 4x40,box,60,85
+2026-01-25,Delta Supplies,Steel Rebar 12mm,ton,5,38900
+2026-01-28,Horus Materials,Gypsum Board 9mm,sheet,80,118
