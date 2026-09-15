@@ -50,8 +50,6 @@ if skipped:
 
 print(f"\nGrand total: {grand_total:,.2f} EGP")
 
-print(f"\nGrand total: {grand_total:,.2f} EGP")
-
 print("\nSpending by supplier:")
 for supplier, total in sorted(totals_by_supplier.items(), key=lambda item: item[1], reverse=True):
     share = total / grand_total * 100
