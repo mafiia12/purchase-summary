@@ -15,4 +15,11 @@ for column in rows[0].keys():
 print("\nFirst 3 rows:")
 for row in rows[:3]:
     print(f"  {row['date']} | {row['supplier']} | {row['item']} | {row['quantity']} {row['unit']} @ {row['unit_price']}")
-    print("\nType check:", type(rows[0]['quantity']))
+
+grand_total = 0
+for row in rows:
+    quantity = float(row["quantity"])
+    unit_price = float(row["unit_price"])
+    grand_total += quantity * unit_price
+
+print(f"\nGrand total: {grand_total:,.2f} EGP")
