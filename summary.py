@@ -1,10 +1,20 @@
 import csv
+import sys
 
-FILE_PATH = "data/sample_purchases.csv"
+DEFAULT_FILE = "data/sample_purchases.csv"
 
-with open(FILE_PATH, mode="r", encoding="utf-8") as file:
-    reader = csv.DictReader(file)
-    rows = list(reader)
+if len(sys.argv) > 1:
+    FILE_PATH = sys.argv[1]
+else:
+    FILE_PATH = DEFAULT_FILE
+    print(f"No file given, using default: {DEFAULT_FILE}")
+try:
+    with open(FILE_PATH, mode="r", encoding="utf-8") as file:
+        reader = csv.DictReader(file)
+        rows = list(reader)
+except FileNotFoundError:
+    print(f"Error: file not found: {FILE_PATH}")
+    sys.exit(1)
 
 print(f"Loaded {len(rows)} rows from {FILE_PATH}")
 
