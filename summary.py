@@ -1,7 +1,6 @@
 import csv
 
-FILE_PATH = "data/sample_purchases.csv"
-
+FILE_PATH = "data/broken.csv"
 with open(FILE_PATH, mode="r", encoding="utf-8") as file:
     reader = csv.DictReader(file)
     rows = list(reader)
@@ -17,19 +16,40 @@ for row in rows[:3]:
     print(f"  {row['date']} | {row['supplier']} | {row['item']} | {row['quantity']} {row['unit']} @ {row['unit_price']}")
 
 grand_total = 0
-for row in rows:
-    quantity = float(row["quantity"])
-    unit_price = float(row["unit_price"])
-    grand_total += quantity * unit_price
+totals_by_supplier = {}
+skipped = []
+
+for index, row in enumerate(rows, start=2):
+    supplier = (row.get("supplier") or "").strip()
+    if not supplier:
+        skipped.append((index, "missing supplier"))
+        continue
+
+    try:
+        quantity = float(row["quantity"])
+        unit_price = float(row["unit_price"])
+    except (ValueError, TypeError):
+        skipped.append((index, "invalid quantity or price"))
+        continue
+
+    if quantity <= 0 or unit_price <= 0:
+        skipped.append((index, "zero or negative value"))
+        continue
+
+    line_total = quantity * unit_price
+    grand_total += line_total
+    totals_by_supplier[supplier] = totals_by_supplier.get(supplier, 0) + line_total
+
+print(f"\nProcessed {len(rows) - len(skipped)} of {len(rows)} rows")
+
+if skipped:
+    print(f"Skipped {len(skipped)} rows:")
+    for line_number, reason in skipped:
+        print(f"  line {line_number}: {reason}")
 
 print(f"\nGrand total: {grand_total:,.2f} EGP")
 
-totals_by_supplier = {}
-
-for row in rows:
-    supplier = row["supplier"]
-    line_total = float(row["quantity"]) * float(row["unit_price"])
-    totals_by_supplier[supplier] = totals_by_supplier.get(supplier, 0) + line_total
+print(f"\nGrand total: {grand_total:,.2f} EGP")
 
 print("\nSpending by supplier:")
 for supplier, total in sorted(totals_by_supplier.items(), key=lambda item: item[1], reverse=True):

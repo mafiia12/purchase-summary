@@ -1,0 +1,5 @@
+date,supplier,item,unit,quantity,unit_price
+2026-01-05,Al Nasr Trading,Cement,ton,15,2450
+2026-01-08,Delta Supplies,Sand,m3,,180
+2026-01-11,Horus Materials,Paint,bucket,25,N/A
+2026-01-12,,Steel,ton,3,38500   
