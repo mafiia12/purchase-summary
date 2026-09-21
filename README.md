@@ -73,4 +73,4 @@ purchase-summary/
 
 ## Data notice
 
-All supplier names and prices in the `data/` folder are fictional and for demonstration only.
+All supplier names and prices in the `data/` folder are fictional and for demonstration only.  by mostafa mahmoud
